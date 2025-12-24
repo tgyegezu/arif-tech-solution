@@ -1,45 +1,44 @@
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
-import WhyUs from "@/components/sections/WhyUs";
-import Process from "@/components/sections/Process";
-import Projects from "@/components/sections/Projects";
-import CTA from "@/components/sections/CTA";
+import WhyChooseUs from "@/components/sections/WhyChooseUs";
+import Industries from "@/components/sections/Industries";
+import Portfolio from "@/components/sections/Portfolio";
+import Pricing from "@/components/sections/Pricing";
+import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 
 const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Arif Tech — Powering Ideas with Technology</title>
+        <title>ArifTechSolution — Transform Your Business with Digital Solutions</title>
         <meta
           name="description"
-          content="Arif Tech is a technology startup creating smart, reliable, and scalable digital solutions for modern businesses. Software development, data analytics, and digital automation."
+          content="Custom websites, intelligent Telegram bots, and powerful software solutions designed specifically for Ethiopian businesses ready to thrive in the digital age."
         />
         <meta
           name="keywords"
-          content="technology startup, software development, data analytics, digital automation, web development, business solutions"
+          content="Ethiopian tech, software development, Telegram bots, web development, Addis Ababa, SME solutions, Telebirr integration"
         />
-        <meta property="og:title" content="Arif Tech — Powering Ideas with Technology" />
+        <meta property="og:title" content="ArifTechSolution — Transform Your Business with Digital Solutions" />
         <meta
           property="og:description"
-          content="Arif Tech is a technology startup creating smart, reliable, and scalable digital solutions for modern businesses."
+          content="Custom websites, intelligent Telegram bots, and powerful software solutions designed specifically for Ethiopian businesses."
         />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://ariftech.com" />
       </Helmet>
 
       <main className="min-h-screen bg-background">
         <Navbar />
         <Hero />
-        <About />
         <Services />
-        <WhyUs />
-        <Process />
-        <Projects />
-        <CTA />
+        <WhyChooseUs />
+        <Industries />
+        <Portfolio />
+        <Pricing />
+        <Contact />
         <Footer />
       </main>
     </>

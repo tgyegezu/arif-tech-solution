@@ -1,74 +1,76 @@
 import { Button } from "@/components/ui/button";
-import { Rocket, MessageCircle } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
+import heroBg from "@/assets/hero-bg.jpg";
+
+const badges = [
+  "CS Degree Certified",
+  "100+ Projects Delivered",
+  "Local Expertise",
+];
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background glow effects */}
-      <div className="absolute inset-0 bg-gradient-dark" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-glow animate-pulse-glow" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background image with overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-hero" />
       
-      <div className="container relative z-10 px-6 py-20">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Brand badge */}
+      <div className="container relative z-10 px-6 py-32">
+        <div className="max-w-3xl">
+          {/* Badge */}
           <div 
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-8 animate-fade-in"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 mb-8 animate-fade-in"
             style={{ animationDelay: '0.1s' }}
           >
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm font-medium text-muted-foreground">Welcome to Arif Tech</span>
+            <span className="w-2 h-2 rounded-full bg-accent" />
+            <span className="text-sm font-medium text-primary-foreground/90">Empowering Ethiopian SMEs</span>
           </div>
 
           {/* Main heading */}
           <h1 
-            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 animate-slide-up"
+            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-in"
             style={{ animationDelay: '0.2s' }}
           >
-            Powering Ideas with{" "}
-            <span className="text-gradient">Technology</span>
+            Transform Your Business with{" "}
+            <span className="text-accent">Digital Solutions</span>
           </h1>
 
           {/* Subheading */}
           <p 
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-slide-up"
+            className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mb-10 leading-relaxed animate-fade-in"
             style={{ animationDelay: '0.3s' }}
           >
-            Arif Tech is a technology startup creating smart, reliable, and scalable digital solutions for modern businesses.
+            Custom websites, intelligent Telegram bots, and powerful software solutions designed specifically for Ethiopian businesses ready to thrive in the digital age.
           </p>
 
           {/* CTA Buttons */}
           <div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up"
+            className="flex flex-col sm:flex-row items-start gap-4 mb-12 animate-fade-in"
             style={{ animationDelay: '0.4s' }}
           >
-            <Button variant="hero" size="lg">
-              <Rocket className="w-5 h-5" />
+            <Button variant="heroSolid" size="lg" className="group">
               Get Started
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="heroOutline" size="lg">
-              <MessageCircle className="w-5 h-5" />
-              Talk to Us
+            <Button variant="hero" size="lg">
+              View Our Work
             </Button>
           </div>
 
-          {/* Stats */}
+          {/* Trust badges */}
           <div 
-            className="grid grid-cols-3 gap-8 mt-20 pt-10 border-t border-border/50 animate-fade-in"
-            style={{ animationDelay: '0.6s' }}
+            className="flex flex-wrap items-center gap-6 animate-fade-in"
+            style={{ animationDelay: '0.5s' }}
           >
-            <div className="text-center">
-              <p className="font-display text-3xl md:text-4xl font-bold text-gradient">50+</p>
-              <p className="text-sm text-muted-foreground mt-1">Projects Delivered</p>
-            </div>
-            <div className="text-center">
-              <p className="font-display text-3xl md:text-4xl font-bold text-gradient">99%</p>
-              <p className="text-sm text-muted-foreground mt-1">Client Satisfaction</p>
-            </div>
-            <div className="text-center">
-              <p className="font-display text-3xl md:text-4xl font-bold text-gradient">24/7</p>
-              <p className="text-sm text-muted-foreground mt-1">Support Available</p>
-            </div>
+            {badges.map((badge) => (
+              <div key={badge} className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-accent" />
+                <span className="text-sm font-medium text-primary-foreground/80">{badge}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

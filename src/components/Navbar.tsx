@@ -22,19 +22,24 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-card/95 backdrop-blur-md shadow-card border-b border-border"
+          ? "bg-background/95 backdrop-blur-md shadow-lg border-b border-border/50"
           : "bg-transparent"
       }`}
     >
       <div className="container px-6">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
-            <img src={logo} alt="ArifTech Digital Solutions" className="h-12 w-auto" />
+          <a href="#" className="flex items-center">
+            <img src={logo} alt="ArifTech Digital Solutions" className="h-10 w-auto" />
           </a>
 
           {/* Desktop navigation */}
@@ -56,7 +61,12 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button variant="default" size="sm">
+            <Button 
+              variant="default" 
+              size="sm" 
+              onClick={scrollToContact}
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-6"
+            >
               Get Started
             </Button>
           </div>
@@ -77,7 +87,7 @@ const Navbar = () => {
 
         {/* Mobile navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border bg-card animate-fade-in">
+          <div className="md:hidden py-4 border-t border-border bg-background/95 backdrop-blur-md animate-fade-in">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
@@ -89,7 +99,7 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="default" size="sm" className="mt-2">
+              <Button variant="default" size="sm" className="mt-2" onClick={scrollToContact}>
                 Get Started
               </Button>
             </div>

@@ -51,11 +51,20 @@ const Hero = () => {
             className="flex flex-col sm:flex-row items-start gap-4 mb-12 animate-fade-in"
             style={{ animationDelay: '0.4s' }}
           >
-            <Button variant="heroSolid" size="lg" className="group">
+            <Button 
+              variant="heroSolid" 
+              size="lg" 
+              className="group"
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            >
               Get Started
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="hero" size="lg">
+            <Button 
+              variant="hero" 
+              size="lg"
+              onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
+            >
               View Our Work
             </Button>
           </div>

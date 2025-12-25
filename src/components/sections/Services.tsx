@@ -1,33 +1,36 @@
 import { Globe, Bot, Code2, Headphones, Check } from "lucide-react";
-
-const services = [
-  {
-    icon: Globe,
-    title: "Custom Websites",
-    description: "Responsive e-commerce sites built with React and Node.js, featuring SEO optimization and Telebirr integration to complement your social media presence.",
-    features: ["E-commerce Ready", "Mobile Responsive", "SEO Optimized", "Payment Integration"]
-  },
-  {
-    icon: Bot,
-    title: "Telegram Bots",
-    description: "Python-based intelligent bots for automated customer service, order management, and real-time alerts tailored to your business needs.",
-    features: ["24/7 Automation", "Order Processing", "Customer Support", "Custom Workflows"]
-  },
-  {
-    icon: Code2,
-    title: "Custom Software",
-    description: "Tailored applications including inventory systems, CRM tools, and business management platforms using MongoDB and SQL databases.",
-    features: ["Inventory Systems", "CRM Solutions", "Data Analytics", "Cloud Integration"]
-  },
-  {
-    icon: Headphones,
-    title: "IT Support",
-    description: "Comprehensive IT audits, ongoing maintenance, cloud optimization, and database management to keep your systems running smoothly.",
-    features: ["System Audits", "24/7 Maintenance", "Cloud Setup", "Performance Tuning"]
-  }
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Services = () => {
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      icon: Globe,
+      title: t("customWebsites"),
+      description: t("customWebsitesDesc"),
+      features: [t("ecommerceReady"), t("mobileResponsive"), t("seoOptimized"), t("paymentIntegration")]
+    },
+    {
+      icon: Bot,
+      title: t("telegramBots"),
+      description: t("telegramBotsDesc"),
+      features: [t("automation247"), t("orderProcessing"), t("customerSupport"), t("customWorkflows")]
+    },
+    {
+      icon: Code2,
+      title: t("customSoftware"),
+      description: t("customSoftwareDesc"),
+      features: [t("inventorySystems"), t("crmSolutions"), t("dataAnalytics"), t("cloudIntegration")]
+    },
+    {
+      icon: Headphones,
+      title: t("itSupport"),
+      description: t("itSupportDesc"),
+      features: [t("systemAudits"), t("maintenance247"), t("cloudSetup"), t("performanceTuning")]
+    }
+  ];
+
   return (
     <section id="services" className="py-24 bg-secondary/30">
       <div className="container px-6">
@@ -35,10 +38,10 @@ const Services = () => {
           {/* Section header */}
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Our Services
+              {t("ourServices")}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Complete digital solutions to elevate your business in Ethiopia's growing digital economy
+              {t("servicesDescription")}
             </p>
           </div>
 

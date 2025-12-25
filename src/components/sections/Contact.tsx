@@ -4,16 +4,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
-const quickFacts = [
-  "Free initial consultation",
-  "Project delivery starts in 10 days",
-  "Flexible payment: 50% upfront, 50% on completion",
-  "All source code included"
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Contact = () => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,11 +16,18 @@ const Contact = () => {
     message: ""
   });
 
+  const quickFacts = [
+    t("freeConsultation"),
+    t("deliveryStarts"),
+    t("flexiblePaymentFact"),
+    t("sourceCodeIncluded")
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: "Message sent!",
-      description: "We'll get back to you within 24 hours.",
+      title: t("messageSent"),
+      description: t("messageResponse"),
     });
     setFormData({ name: "", email: "", phone: "", message: "" });
   };
@@ -37,10 +39,10 @@ const Contact = () => {
           {/* Section header */}
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Ready to Transform Your Business?
+              {t("readyToTransform")}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Get a free consultation and project estimate. Let's discuss how we can help you succeed.
+              {t("contactDesc")}
             </p>
           </div>
 
@@ -48,12 +50,12 @@ const Contact = () => {
             {/* Contact form */}
             <div className="bg-secondary/30 rounded-2xl p-8 border border-border">
               <h3 className="font-display text-xl font-bold text-foreground mb-6">
-                Send Us a Message
+                {t("sendUsMessage")}
               </h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <Input
-                    placeholder="Your Name"
+                    placeholder={t("yourName")}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
@@ -62,7 +64,7 @@ const Contact = () => {
                 <div>
                   <Input
                     type="email"
-                    placeholder="Email Address"
+                    placeholder={t("emailAddress")}
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
@@ -71,14 +73,14 @@ const Contact = () => {
                 <div>
                   <Input
                     type="tel"
-                    placeholder="Phone Number"
+                    placeholder={t("phoneNumber")}
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   />
                 </div>
                 <div>
                   <Textarea
-                    placeholder="Tell Us About Your Project"
+                    placeholder={t("tellUsProject")}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={5}
@@ -86,7 +88,7 @@ const Contact = () => {
                   />
                 </div>
                 <Button type="submit" size="lg" className="w-full">
-                  Get Free Consultation
+                  {t("getFreeConsultation")}
                 </Button>
               </form>
             </div>
@@ -94,10 +96,10 @@ const Contact = () => {
             {/* Contact info */}
             <div>
               <h3 className="font-display text-xl font-bold text-foreground mb-6">
-                Get in Touch
+                {t("getInTouch")}
               </h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                We're here to answer your questions and discuss how we can help bring your digital vision to life. Reach out through any of these channels.
+                {t("getInTouchDesc")}
               </p>
 
               <div className="space-y-6 mb-10">
@@ -106,8 +108,8 @@ const Contact = () => {
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                    <p className="text-muted-foreground">contact@techsolutions.et</p>
+                    <h4 className="font-semibold text-foreground mb-1">{t("email")}</h4>
+                    <p className="text-muted-foreground">contact@ariftech.et</p>
                   </div>
                 </div>
 
@@ -116,7 +118,7 @@ const Contact = () => {
                     <Phone className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Phone</h4>
+                    <h4 className="font-semibold text-foreground mb-1">{t("phone")}</h4>
                     <p className="text-muted-foreground">+251 9XX XXX XXX</p>
                   </div>
                 </div>
@@ -126,7 +128,7 @@ const Contact = () => {
                     <MapPin className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Location</h4>
+                    <h4 className="font-semibold text-foreground mb-1">{t("location")}</h4>
                     <p className="text-muted-foreground">Addis Ababa, Ethiopia</p>
                   </div>
                 </div>
@@ -134,7 +136,7 @@ const Contact = () => {
 
               {/* Quick facts */}
               <div className="bg-primary/5 rounded-xl p-6 border border-primary/10">
-                <h4 className="font-semibold text-foreground mb-4">Quick Facts</h4>
+                <h4 className="font-semibold text-foreground mb-4">{t("quickFacts")}</h4>
                 <ul className="space-y-3">
                   {quickFacts.map((fact) => (
                     <li key={fact} className="flex items-center gap-3">

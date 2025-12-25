@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 import portfolioSolar from "@/assets/portfolio-solar.png";
 import portfolioBoutique from "@/assets/portfolio-boutique.png";
 import portfolioJovani from "@/assets/portfolio-jovani.png";
@@ -29,6 +30,8 @@ const projects = [
 ];
 
 const Portfolio = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="portfolio" className="py-24 bg-card">
       <div className="container px-6">
@@ -36,10 +39,10 @@ const Portfolio = () => {
           {/* Section header */}
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Our Work
+              {t("ourWork")}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Explore our successful projects and see how we've helped businesses thrive online
+              {t("portfolioDesc")}
             </p>
           </div>
 
@@ -83,7 +86,7 @@ const Portfolio = () => {
                   {/* Link */}
                   <Button variant="outline" size="sm" className="w-full" asChild>
                     <a href={project.link} target="_blank" rel="noopener noreferrer">
-                      View Project
+                      {t("viewProject")}
                       <ExternalLink className="w-4 h-4 ml-2" />
                     </a>
                   </Button>

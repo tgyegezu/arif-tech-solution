@@ -1,39 +1,42 @@
 import { GraduationCap, Award, MapPin, Users, FileCode, CreditCard } from "lucide-react";
-
-const reasons = [
-  {
-    icon: GraduationCap,
-    title: "Computer Science Degree",
-    description: "Solid foundation in software engineering, algorithms, and system design"
-  },
-  {
-    icon: Award,
-    title: "100+ Projects Delivered",
-    description: "Proven track record with Ethiopian SMEs across various industries"
-  },
-  {
-    icon: MapPin,
-    title: "Ethiopian Market Expert",
-    description: "Deep understanding of local business needs, payment systems, and regulations"
-  },
-  {
-    icon: Users,
-    title: "Ongoing Support & Training",
-    description: "We don't just deliver—we ensure your team can use and maintain the solution"
-  },
-  {
-    icon: FileCode,
-    title: "Quality Code & Documentation",
-    description: "Clean, maintainable code with full documentation. You own everything we build"
-  },
-  {
-    icon: CreditCard,
-    title: "Flexible Payment Terms",
-    description: "50% upfront, 50% on completion. No hidden fees or surprises"
-  }
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const WhyChooseUs = () => {
+  const { t } = useLanguage();
+
+  const reasons = [
+    {
+      icon: GraduationCap,
+      title: t("csDegree"),
+      description: t("csDegreeDesc")
+    },
+    {
+      icon: Award,
+      title: t("projectsDeliveredTitle"),
+      description: t("projectsDeliveredDesc")
+    },
+    {
+      icon: MapPin,
+      title: t("ethiopianExpert"),
+      description: t("ethiopianExpertDesc")
+    },
+    {
+      icon: Users,
+      title: t("ongoingSupport"),
+      description: t("ongoingSupportDesc")
+    },
+    {
+      icon: FileCode,
+      title: t("qualityCode"),
+      description: t("qualityCodeDesc")
+    },
+    {
+      icon: CreditCard,
+      title: t("flexiblePayment"),
+      description: t("flexiblePaymentDesc")
+    }
+  ];
+
   return (
     <section id="why-us" className="py-24 bg-card">
       <div className="container px-6">
@@ -41,10 +44,10 @@ const WhyChooseUs = () => {
           {/* Section header */}
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Why Choose ArifTechSolution?
+              {t("whyChooseUs")}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We understand Ethiopian businesses and deliver solutions that work in our local context
+              {t("whyChooseUsDesc")}
             </p>
           </div>
 

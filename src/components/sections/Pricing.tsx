@@ -1,55 +1,58 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const plans = [
-  {
-    name: "Basic",
-    description: "Perfect for getting started",
-    price: "20,000",
-    currency: "ETB",
-    popular: false,
-    features: [
-      "Professional Website or Telegram Bot",
-      "Mobile Responsive Design",
-      "Basic SEO Setup",
-      "1 Month Support",
-      "Source Code Included"
-    ]
-  },
-  {
-    name: "Standard",
-    description: "Most popular choice",
-    price: "50,000",
-    currency: "ETB",
-    popular: true,
-    features: [
-      "Professional Website + Telegram Bot",
-      "Advanced SEO & Analytics",
-      "Payment Integration (Telebirr)",
-      "3 Months Support",
-      "Free Training Session",
-      "Priority Support"
-    ]
-  },
-  {
-    name: "Premium",
-    description: "Complete solution",
-    price: "100,000",
-    currency: "ETB",
-    popular: false,
-    features: [
-      "Full Custom Application",
-      "Advanced Features & Integration",
-      "Database Setup & Management",
-      "6 Months Support",
-      "Dedicated Account Manager",
-      "Regular Updates & Maintenance",
-      "Staff Training Program"
-    ]
-  }
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Pricing = () => {
+  const { t } = useLanguage();
+
+  const plans = [
+    {
+      name: t("basic"),
+      description: t("basicDesc"),
+      price: "20,000",
+      currency: "ETB",
+      popular: false,
+      features: [
+        "Professional Website or Telegram Bot",
+        "Mobile Responsive Design",
+        "Basic SEO Setup",
+        "1 Month Support",
+        "Source Code Included"
+      ]
+    },
+    {
+      name: t("standard"),
+      description: t("standardDesc"),
+      price: "50,000",
+      currency: "ETB",
+      popular: true,
+      features: [
+        "Professional Website + Telegram Bot",
+        "Advanced SEO & Analytics",
+        "Payment Integration (Telebirr)",
+        "3 Months Support",
+        "Free Training Session",
+        "Priority Support"
+      ]
+    },
+    {
+      name: t("premium"),
+      description: t("premiumDesc"),
+      price: "100,000",
+      currency: "ETB",
+      popular: false,
+      features: [
+        "Full Custom Application",
+        "Advanced Features & Integration",
+        "Database Setup & Management",
+        "6 Months Support",
+        "Dedicated Account Manager",
+        "Regular Updates & Maintenance",
+        "Staff Training Program"
+      ]
+    }
+  ];
+
   return (
     <section id="pricing" className="py-24 bg-secondary/30">
       <div className="container px-6">
@@ -57,10 +60,10 @@ const Pricing = () => {
           {/* Section header */}
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Transparent Pricing
+              {t("transparentPricing")}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Flexible packages designed for Ethiopian SMEs. All prices in ETB (15% VAT applies)
+              {t("pricingDesc")}
             </p>
           </div>
 
@@ -76,7 +79,7 @@ const Pricing = () => {
                 {/* Popular badge */}
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground text-sm font-semibold rounded-full">
-                    Popular
+                    {t("popular")}
                   </div>
                 )}
 
@@ -109,8 +112,9 @@ const Pricing = () => {
                   variant={plan.popular ? "default" : "outline"} 
                   size="lg" 
                   className="w-full"
+                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                 >
-                  Get Started
+                  {t("getStarted")}
                 </Button>
               </div>
             ))}
@@ -119,10 +123,10 @@ const Pricing = () => {
           {/* Payment terms */}
           <div className="text-center mt-12 space-y-2">
             <p className="text-sm text-muted-foreground">
-              <strong>Payment Terms:</strong> 50% upfront, 50% on completion
+              <strong>{t("paymentTerms")}</strong> {t("paymentTermsText")}
             </p>
             <p className="text-sm text-muted-foreground">
-              All extras and additional features are billed separately
+              {t("extrasNote")}
             </p>
           </div>
         </div>

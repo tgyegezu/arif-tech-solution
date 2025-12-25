@@ -1,39 +1,42 @@
 import { ShoppingCart, Coffee, GraduationCap, Heart, Building2, Landmark } from "lucide-react";
-
-const industries = [
-  {
-    icon: ShoppingCart,
-    title: "Retail & E-commerce",
-    description: "Inventory management, online stores with Telebirr payment integration"
-  },
-  {
-    icon: Coffee,
-    title: "Food & Beverage",
-    description: "Order management bots, delivery tracking, and customer loyalty systems"
-  },
-  {
-    icon: GraduationCap,
-    title: "Education",
-    description: "Student management systems, online learning platforms, and admin tools"
-  },
-  {
-    icon: Heart,
-    title: "Healthcare",
-    description: "Appointment scheduling, patient records, and clinic management software"
-  },
-  {
-    icon: Building2,
-    title: "Hotels & Tourism",
-    description: "Booking systems, guest management, and automated customer service"
-  },
-  {
-    icon: Landmark,
-    title: "Financial Services",
-    description: "Transaction tracking, reporting tools, and secure data management"
-  }
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Industries = () => {
+  const { t } = useLanguage();
+
+  const industries = [
+    {
+      icon: ShoppingCart,
+      title: t("retailEcommerce"),
+      description: t("retailDesc")
+    },
+    {
+      icon: Coffee,
+      title: t("foodBeverage"),
+      description: t("foodDesc")
+    },
+    {
+      icon: GraduationCap,
+      title: t("education"),
+      description: t("educationDesc")
+    },
+    {
+      icon: Heart,
+      title: t("healthcare"),
+      description: t("healthcareDesc")
+    },
+    {
+      icon: Building2,
+      title: t("hotelsTourism"),
+      description: t("hotelsDesc")
+    },
+    {
+      icon: Landmark,
+      title: t("financialServices"),
+      description: t("financialDesc")
+    }
+  ];
+
   return (
     <section id="industries" className="py-24 bg-secondary/30">
       <div className="container px-6">
@@ -41,10 +44,10 @@ const Industries = () => {
           {/* Section header */}
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Industries We Serve
+              {t("industriesTitle")}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Specialized solutions for Ethiopian businesses across multiple sectors
+              {t("industriesDesc")}
             </p>
           </div>
 

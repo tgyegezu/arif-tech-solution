@@ -1,14 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-
-const badges = [
-  "CS Degree Certified",
-  "100+ Projects Delivered",
-  "Local Expertise",
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Hero = () => {
+  const { t } = useLanguage();
+
+  const badges = [
+    t("csCertified"),
+    t("projectsDelivered"),
+    t("localExpertise"),
+  ];
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background image with overlay */}
@@ -26,7 +29,7 @@ const Hero = () => {
             style={{ animationDelay: '0.1s' }}
           >
             <span className="w-2 h-2 rounded-full bg-accent" />
-            <span className="text-sm font-medium text-primary-foreground/90">Empowering Ethiopian SMEs</span>
+            <span className="text-sm font-medium text-primary-foreground/90">{t("empoweringBadge")}</span>
           </div>
 
           {/* Main heading */}
@@ -34,8 +37,8 @@ const Hero = () => {
             className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-in"
             style={{ animationDelay: '0.2s' }}
           >
-            Transform Your Business with{" "}
-            <span className="text-accent">Digital Solutions</span>
+            {t("heroTitle1")}{" "}
+            <span className="text-accent">{t("heroTitle2")}</span>
           </h1>
 
           {/* Subheading */}
@@ -43,7 +46,7 @@ const Hero = () => {
             className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mb-10 leading-relaxed animate-fade-in"
             style={{ animationDelay: '0.3s' }}
           >
-            Custom websites, intelligent Telegram bots, and powerful software solutions designed specifically for Ethiopian businesses ready to thrive in the digital age.
+            {t("heroDescription")}
           </p>
 
           {/* CTA Buttons */}
@@ -57,7 +60,7 @@ const Hero = () => {
               className="group"
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
-              Get Started
+              {t("getStarted")}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
@@ -65,7 +68,7 @@ const Hero = () => {
               size="lg"
               onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
             >
-              View Our Work
+              {t("viewOurWork")}
             </Button>
           </div>
 

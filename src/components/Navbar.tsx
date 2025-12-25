@@ -2,16 +2,18 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Globe } from "lucide-react";
 import logo from "@/assets/logo.jpg";
-
-const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
+
+  const navLinks = [
+    { label: t("services"), href: "#services" },
+    { label: t("pricing"), href: "#pricing" },
+    { label: t("contact"), href: "#contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,12 +29,14 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const toggleLanguage = () => {
+    setLanguage(language === "en" ? "am" : "en");
+  };
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-lg border-b border-border/50"
-          : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md border-b border-border/30 ${
+        isScrolled ? "shadow-lg" : ""
       }`}
     >
       <div className="container px-6">
@@ -48,15 +52,18 @@ const Navbar = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-primary transition-colors"
               >
                 {link.label}
               </a>
             ))}
-            <div className="flex items-center gap-2 text-sm text-foreground/60">
+            <button 
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors cursor-pointer"
+            >
               <Globe className="w-4 h-4" />
-              <span>English</span>
-            </div>
+              <span>{language === "en" ? "English" : "አማርኛ"}</span>
+            </button>
           </div>
 
           {/* CTA Button */}
@@ -67,13 +74,13 @@ const Navbar = () => {
               onClick={scrollToContact}
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-6"
             >
-              Get Started
+              {t("getStarted")}
             </Button>
           </div>
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-gray-700"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -87,20 +94,27 @@ const Navbar = () => {
 
         {/* Mobile navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border bg-background/95 backdrop-blur-md animate-fade-in">
+          <div className="md:hidden py-4 border-t border-border bg-white animate-fade-in">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors py-2"
+                  className="text-sm font-medium text-gray-700 hover:text-primary transition-colors py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
                 </a>
               ))}
+              <button 
+                onClick={toggleLanguage}
+                className="flex items-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors py-2"
+              >
+                <Globe className="w-4 h-4" />
+                <span>{language === "en" ? "English" : "አማርኛ"}</span>
+              </button>
               <Button variant="default" size="sm" className="mt-2" onClick={scrollToContact}>
-                Get Started
+                {t("getStarted")}
               </Button>
             </div>
           </div>

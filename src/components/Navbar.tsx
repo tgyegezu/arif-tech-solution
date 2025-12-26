@@ -57,7 +57,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="flex items-center">
-            <img src={logo} alt="ArifTech Digital Solutions" className="h-8 w-auto" />
+            <img src={logo} alt="ArifTech Digital Solutions" className="h-12 w-auto" />
           </a>
 
           {/* Desktop navigation */}

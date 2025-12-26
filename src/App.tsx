@@ -10,7 +10,7 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const App = () => {
+function App() {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>

@@ -19,7 +19,7 @@ const Footer = () => {
           <div className="space-y-4">
             <img src={logo} alt="ArifTech Digital Solutions" className="h-12 w-auto bg-white p-1 rounded" />
             <p className="text-gray-400 text-sm leading-relaxed">
-              {t("footerDescription")}
+              Empowering Ethiopian SMEs with cutting-edge technology solutions. From websites to custom software, we're your trusted tech partner.
             </p>
           </div>
 
